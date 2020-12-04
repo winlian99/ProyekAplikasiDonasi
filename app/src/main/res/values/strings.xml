@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ProyekAplikasiDonasi</string>
+    <string name="title_donasi">Donasi</string>
+    <string name="title_galang">Galang Dana</string>
+    <string name="title_riwayat">Riwayat Donasi</string>
+    <string name="title_profile">Profile</string>
+</resources>
