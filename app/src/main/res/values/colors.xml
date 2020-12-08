@@ -6,4 +6,5 @@
     <color name="startBlue">#09c6df</color>
     <color name="endBlue">#0bcce6</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="dangerPastel">#d9534f</color>
 </resources>
