@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "370394069411",
+    "firebase_url": "https://oyek-onasi.firebaseio.com",
+    "project_id": "oyek-onasi",
+    "storage_bucket": "oyek-onasi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370394069411:android:1c32d4880505b7caa70216",
+        "android_client_info": {
+          "package_name": "com.example.proyekaplikasidonasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370394069411-crmhdgvt593d1o8opp63er2be5hv6j5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAppaOhGpz-oyGMki-YY0ZU6sMuz7l7zw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370394069411-crmhdgvt593d1o8opp63er2be5hv6j5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

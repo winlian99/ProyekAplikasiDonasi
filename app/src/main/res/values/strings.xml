@@ -4,4 +4,5 @@
     <string name="title_galang">Galang Dana</string>
     <string name="title_riwayat">Riwayat Donasi</string>
     <string name="title_profile">Profile</string>
+    <string name="dbColUsersCollection">users</string>
 </resources>
