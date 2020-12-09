@@ -25,9 +25,10 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val db = FirebaseFirestore.getInstance()
-        val dbCol = R.string.dbColUsersCollection.toString()
+        val dbCol = getString(R.string.dbColUsersCollection)
+        val userId = "DKpawmCmV7yuOqB1L8zq"
 
-        db.collection("users").document("DKpawmCmV7yuOqB1L8zq")
+        db.collection(dbCol).document(userId)
             .get()
             .addOnSuccessListener {
                 var data = it?.data as MutableMap<String, String>
