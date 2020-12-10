@@ -37,7 +37,8 @@
                     android:text="Handy Prayoga Angjaya"
                     android:textColor="#ffffff"
                     android:textStyle="bold"
-                    android:textSize="26sp"/>
+                    android:textSize="26sp"
+                    android:id="@+id/profile_name"/>
 
             </LinearLayout>
 
@@ -57,39 +58,14 @@
                         android:gravity="center"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total Donasi"
-                            android:textSize="20sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:text="Rp. 0"
-                            android:paddingTop="5dp"
-                            android:textColor="@color/startBlue"
-                            android:id="@+id/profile_total_donasi"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dompet Saya"
-                            android:textSize="20sp"/>
+                            android:textSize="20sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
