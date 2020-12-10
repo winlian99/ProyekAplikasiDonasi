@@ -10,7 +10,7 @@
         android:id="@+id/imageView2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="54dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,12 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:text="REGISTER"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:text="REGISTER" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/register_nama_lengkap"
@@ -45,7 +44,6 @@
         android:id="@+id/register_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
@@ -75,16 +73,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_password" />
 
-    <EditText
+    <DatePicker
         android:id="@+id/register_tanggal_lahir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="dd/mm/yyyy"
-        android:inputType="date"
+        android:layout_width="238dp"
+        android:layout_height="130dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
         app:layout_constraintEnd_toEndOf="@+id/register_nama_lengkap"
         app:layout_constraintStart_toStartOf="@+id/register_nama_lengkap"
         app:layout_constraintTop_toBottomOf="@+id/register_nama_lengkap" />
+
+
+    <!--    <EditText-->
+<!--        android:id="@+id/register_tanggal_lahir"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="dd/mm/yyyy"-->
+<!--        android:inputType="date"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/register_nama_lengkap"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/register_nama_lengkap"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/register_nama_lengkap" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
