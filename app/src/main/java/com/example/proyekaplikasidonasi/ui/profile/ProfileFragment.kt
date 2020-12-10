@@ -31,7 +31,7 @@ class ProfileFragment : Fragment() {
 
         val db = FirebaseFirestore.getInstance()
         val dbCol = getString(R.string.dbColUsersCollection)
-        val userId = "DKpawmCmV7yuOqB1L8zq"
+        val userId = mAuth.currentUser?.email.toString()
 
         db.collection(dbCol).document(userId)
             .get()
@@ -51,6 +51,7 @@ class ProfileFragment : Fragment() {
         }
         profile_button_signout.setOnClickListener{
             mAuth.signOut()
+
         }
     }
 }
