@@ -34,16 +34,16 @@ class RegisterActivity : AppCompatActivity() {
         var password : String = register_password.text.toString()
 
         if(nama_lengkap == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(email == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(tgl_lahir == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(password==""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else{
             mAuth.createUserWithEmailAndPassword(email,password)
