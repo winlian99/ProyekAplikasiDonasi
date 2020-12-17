@@ -1,99 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.galang.GalangFragment">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_galang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_margin="10sp"
-            android:orientation="vertical"
             android:id="@+id/header_galang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:orientation="vertical"
             tools:ignore="MissingConstraints">
+
             <TextView
-                android:textStyle="bold"
-                android:paddingTop="10sp"
+                android:id="@+id/judul_galang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/judul_galang"
-                android:text="Judul Galang"/>
+                android:paddingTop="10sp"
+                android:text="Judul Galang"
+                android:textStyle="bold" />
 
             <TextView
-                android:paddingTop="5sp"
                 android:id="@+id/text_progress"
-                android:text="Progress Galang (From x to y)"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:paddingTop="5sp"
+                android:text="Progress Galang (From x to y)" />
 
             <ProgressBar
-                android:padding="10sp"
-                android:progress="25"
+                android:id="@+id/progress_galang"
                 style="@android:style/Widget.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:padding="10sp"
+                android:progress="25" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/jumlah_donasi"
-                    android:text="x Donasi"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/jumlah_donasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="x Donasi" />
+
+                <TextView
+                    android:id="@+id/batas_galang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/batas_galang"
-                    android:text="x hari lagi"
-                    android:gravity="end"/>
+                    android:gravity="end"
+                    android:text="x hari lagi" />
             </LinearLayout>
 
             <Button
-                android:layout_margin="10sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DONASI"/>
+                android:layout_margin="10sp"
+                android:text="DONASI" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_margin="10sp"
-            android:orientation="vertical"
             android:id="@+id/cerita_galang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textStyle="bold"
+                    android:id="@+id/description_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="This is cerita"/>
+                    android:text="This is cerita"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/description_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tanggal Cerita"
-                    android:gravity="right"/>
+                    android:gravity="right"
+                    android:text="Tanggal Cerita" />
             </LinearLayout>
 
             <TextView
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Konten Cerita"/>
+                android:text="Konten Cerita" />
         </LinearLayout>
 
     </LinearLayout>
