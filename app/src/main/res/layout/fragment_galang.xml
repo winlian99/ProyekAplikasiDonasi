@@ -6,6 +6,7 @@
     tools:context=".ui.galang.GalangFragment">
 
     <LinearLayout
+        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,27 +17,46 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
+            android:padding="10sp"
+            android:background="@drawable/box_with_border"
             android:id="@+id/header_galang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
             <TextView
+                android:textSize="24sp"
                 android:id="@+id/judul_galang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10sp"
+                android:paddingTop="10dp"
                 android:text="Judul Galang"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_progress"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5sp"
-                android:text="Progress Galang (From x to y)" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/startBlue"
+                    android:textSize="16sp"
+                    android:id="@+id/donasi_sekarang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:text="Rp. x" />
+
+                <TextView
+                    android:id="@+id/target_donasi"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" terkumpul dari y"/>
+
+            </LinearLayout>
 
             <ProgressBar
                 android:id="@+id/progress_galang"
@@ -52,12 +72,14 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textSize="14sp"
                     android:id="@+id/jumlah_donasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="x Donasi" />
 
                 <TextView
+                    android:textSize="14sp"
                     android:id="@+id/batas_galang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,39 +90,41 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10sp"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:background="@color/startBlue"
+                android:textColor="@color/cardview_light_background"
                 android:text="DONASI" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:padding="10dp"
+            android:background="@drawable/box_with_border"
             android:id="@+id/cerita_galang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:textSize="20sp"
+                android:id="@+id/description_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/description_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="This is cerita"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/description_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Tanggal Cerita" />
-            </LinearLayout>
+                android:text="This is cerita"
+                android:textStyle="bold" />
 
             <TextView
+                android:textSize="16sp"
+                android:id="@+id/description_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Cerita" />
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textSize="16sp"
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
