@@ -104,12 +104,13 @@
                     android:src="@drawable/ic_baseline_account_balance_wallet_24" />
 
                 <TextView
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/profile_topup_dompet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:textSize="18sp"
-                    android:text="Dompet Saya" />
+                    android:text="Dompet Saya"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

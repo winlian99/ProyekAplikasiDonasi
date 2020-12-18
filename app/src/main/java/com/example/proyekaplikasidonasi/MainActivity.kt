@@ -2,6 +2,7 @@ package com.example.proyekaplikasidonasi
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.http.SslCertificate
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,7 +11,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.proyekaplikasidonasi.ui.donasi.DonasiFragment
+import com.example.proyekaplikasidonasi.ui.galang.GalangFragment
 import com.example.proyekaplikasidonasi.ui.login.LoginActivity
+import com.example.proyekaplikasidonasi.ui.profile.ProfileFragment
+import com.example.proyekaplikasidonasi.ui.riwayat.RiwayatFragment
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -37,8 +42,8 @@ class MainActivity : AppCompatActivity() {
             val editor : SharedPreferences.Editor = sP.edit()
             editor.putString(KeyData, mAuth.currentUser!!.email.toString())
             editor.apply()
-        }
 
+        }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
