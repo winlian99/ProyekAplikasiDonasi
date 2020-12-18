@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.proyekaplikasidonasi.R
 
-class DonasiFragment : Fragment() {
+class DonasiFragment : Fragment()  {
 
     override fun onCreateView(
             inflater: LayoutInflater,

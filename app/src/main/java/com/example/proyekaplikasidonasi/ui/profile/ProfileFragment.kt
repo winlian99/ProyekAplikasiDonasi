@@ -2,12 +2,11 @@ package com.example.proyekaplikasidonasi.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.proyekaplikasidonasi.MainActivity
 import com.example.proyekaplikasidonasi.R
@@ -48,6 +47,11 @@ class ProfileFragment : Fragment() {
 //        profile_bantuan.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_contact_support_24, 0,0,0)
 //        profile_sign_out.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_assignment_return_24, 0, 0, 0)
 
+        profile_topup_dompet.setOnClickListener {
+            Toast.makeText(context,"Topup",Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(context, ProfileTopupActivity::class.java)
+            startActivity(intent)
 //        profile_dompet_saya.setOnClickListener {
 //            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
 //        }
@@ -67,7 +71,7 @@ class ProfileFragment : Fragment() {
         profile_button_signout.setOnClickListener{
             mAuth.signOut()
             Toast.makeText(context, "Sign Out Success", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
         }
     }
