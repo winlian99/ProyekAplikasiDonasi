@@ -48,13 +48,14 @@ class ProfileFragment : Fragment() {
 //        profile_sign_out.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_assignment_return_24, 0, 0, 0)
 
         profile_topup_dompet.setOnClickListener {
-            Toast.makeText(context,"Topup",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Topup", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(context, ProfileTopupActivity::class.java)
             startActivity(intent)
 //        profile_dompet_saya.setOnClickListener {
 //            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
 //        }
+        }
 
         profile_menu_setting_profile.setOnClickListener{
             val intent = Intent(context, ProfileSettingFragment::class.java)

@@ -71,12 +71,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Sisa Hari"
+        android:text="Batas Waktu"
         app:layout_constraintEnd_toEndOf="@+id/item_donasi_progressbar"
         app:layout_constraintTop_toBottomOf="@+id/item_donasi_progressbar" />
 
     <TextView
-        android:id="@+id/item_donasi_sisa_hari"
+        android:id="@+id/item_donasi_batas_waktu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
