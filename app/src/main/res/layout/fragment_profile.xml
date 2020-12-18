@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
@@ -169,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="15dp"
                     android:textSize="18sp"
+                    android:id="@+id/profile_menu_setting_profile"
                     android:text="Setting Profile" />
 
             </LinearLayout>
@@ -327,4 +328,4 @@
 
 <!--    </LinearLayout>-->
 
-</ScrollView>
+</LinearLayout>
