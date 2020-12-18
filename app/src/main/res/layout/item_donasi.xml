@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/item_donasi_gambar"
+        android:layout_width="192dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/item_donasi_judul"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/item_donasi_gambar"
+        app:layout_constraintTop_toTopOf="@+id/item_donasi_gambar" />
+
+    <TextView
+        android:id="@+id/item_donasi_penyelenggara"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/item_donasi_judul"
+        app:layout_constraintTop_toBottomOf="@+id/item_donasi_judul" />
+
+    <ProgressBar
+        android:id="@+id/item_donasi_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/item_donasi_penyelenggara"
+        app:layout_constraintTop_toBottomOf="@+id/item_donasi_penyelenggara" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Terkumpul"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/item_donasi_progressbar"
+        app:layout_constraintTop_toBottomOf="@+id/item_donasi_progressbar" />
+
+    <TextView
+        android:id="@+id/item_donasi_terkumpul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Sisa Hari"
+        app:layout_constraintEnd_toEndOf="@+id/item_donasi_progressbar"
+        app:layout_constraintTop_toBottomOf="@+id/item_donasi_progressbar" />
+
+    <TextView
+        android:id="@+id/item_donasi_sisa_hari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

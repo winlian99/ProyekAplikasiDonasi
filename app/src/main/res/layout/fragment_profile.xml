@@ -1,193 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".ui.profile.ProfileFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="345dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:background="@drawable/profile_gradient_background"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="305dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="35dp"
-                    app:srcCompat="@mipmap/ic_launcher_round" />
-
-                <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Handy Prayoga Angjaya"
-                    android:textColor="#ffffff"
-                    android:textStyle="bold"
-                    android:textSize="26sp"
-                    android:id="@+id/profile_name"/>
-
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="350dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="230dp">
+                android:layout_height="345dp">
 
                 <LinearLayout
+                    android:background="@drawable/profile_gradient_background"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:layout_height="305dp"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:gravity="center"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="125dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="35dp"
+                        app:srcCompat="@mipmap/ic_launcher_round" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Dompet Saya"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:text="Rp. 0"
-                            android:paddingTop="5dp"
-                            android:textColor="@color/startBlue"
-                            android:id="@+id/profile_dompet_saya"/>
-
-                    </LinearLayout>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Handy Prayoga Angjaya"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold"
+                        android:textSize="26sp"
+                        android:id="@+id/profile_name"/>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="350dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="230dp">
 
-        </RelativeLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
-        <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center">
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dompet Saya"
+                                android:textSize="20sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:text="Rp. 0"
+                                android:paddingTop="5dp"
+                                android:textColor="@color/startBlue"
+                                android:id="@+id/profile_dompet_saya"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
 
             <LinearLayout
-                android:paddingLeft="45dp"
-                android:layout_marginBottom="2dp"
-                android:layout_width="match_parent"
+                android:layout_width="360dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_baseline_account_balance_wallet_24" />
-
-                <TextView
-                    android:id="@+id/profile_topup_dompet"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:paddingLeft="45dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="15dp"
-                    android:text="Dompet Saya"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_account_balance_wallet_24" />
+
+                    <TextView
+                        android:id="@+id/profile_topup_dompet"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:textSize="18sp"
+                        android:text="Dompet Saya" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingLeft="45dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_dns_24" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:textSize="18sp"
+                        android:text="Galang Dana Saya" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingLeft="45dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_settings_24" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:textSize="18sp"
+                        android:id="@+id/profile_menu_setting_profile"
+                        android:text="Setting Profile" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="45dp"
+                    android:layout_marginRight="45dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1sp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <LinearLayout
+                    android:paddingLeft="45dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_contact_support_24" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:textSize="18sp"
+                        android:text="Bantuan" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <View
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:layout_width="match_parent"
-                android:layout_height="1sp"
-                android:layout_marginBottom="2dp"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingLeft="45dp"
-                android:layout_marginBottom="2dp"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/profile_button_signout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_baseline_dns_24" />
-
-                <TextView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textSize="18sp"
-                    android:text="Galang Dana Saya" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:layout_width="match_parent"
-                android:layout_height="1sp"
-                android:layout_marginBottom="2dp"
-                android:background="@android:color/darker_gray"/>
-
-            <LinearLayout
-                android:paddingLeft="45dp"
-                android:layout_marginBottom="2dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_baseline_contact_support_24" />
-
-                <TextView
-                    android:layout_gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="15dp"
-                    android:textSize="18sp"
-                    android:text="Bantuan" />
-
-            </LinearLayout>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/profile_sign_out"
+                android:text="Sign Out"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/profile_button_signout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/profile_sign_out"
-            android:text="Sign Out"
-            android:textColor="#ffffff"
-            android:textStyle="bold" />
+    </ScrollView>
 
-    </LinearLayout>
+
 
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="match_parent"-->
@@ -298,4 +337,4 @@
 
 <!--    </LinearLayout>-->
 
-</ScrollView>
+</LinearLayout>
