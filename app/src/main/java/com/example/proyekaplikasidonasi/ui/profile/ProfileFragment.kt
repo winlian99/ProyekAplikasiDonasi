@@ -2,12 +2,13 @@ package com.example.proyekaplikasidonasi.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.example.proyekaplikasidonasi.MainActivity
 import com.example.proyekaplikasidonasi.R
 import com.example.proyekaplikasidonasi.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -31,7 +32,7 @@ class ProfileFragment : Fragment() {
 
         val db = FirebaseFirestore.getInstance()
         val dbCol = getString(R.string.dbColUsersCollection)
-        val userId = "DKpawmCmV7yuOqB1L8zq"
+        val userId = mAuth.currentUser?.email.toString()
 
         db.collection(dbCol).document(userId)
             .get()
@@ -46,11 +47,54 @@ class ProfileFragment : Fragment() {
 //        profile_bantuan.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_contact_support_24, 0,0,0)
 //        profile_sign_out.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_assignment_return_24, 0, 0, 0)
 
-        profile_dompet_saya.setOnClickListener {
-            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
+        profile_topup_dompet.setOnClickListener {
+            Toast.makeText(context, "Topup", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(context, ProfileTopupActivity::class.java)
+            startActivity(intent)
+//        profile_dompet_saya.setOnClickListener {
+//            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
+//        }
         }
+
+        profile_menu_setting_profile.setOnClickListener{
+            val intent = Intent(context, ProfileSettingFragment::class.java)
+            startActivity(intent)
+//            val profileSettingProfileFragment = ProfileSettingProfileFragment()
+//            var mFragmentManager = activity?.supportFragmentManager
+//            mFragmentManager?.beginTransaction()?.apply {
+//                replace(R.id.profile, profileSettingProfileFragment)
+//                addToBackStack(null)
+//                commit()
+//            }
+        }
+
         profile_button_signout.setOnClickListener{
             mAuth.signOut()
+            Toast.makeText(context, "Sign Out Success", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
+
+
+
+    override fun onResume() {
+        super.onResume()
+
+        mAuth = FirebaseAuth.getInstance()
+
+        val db = FirebaseFirestore.getInstance()
+        val dbCol = getString(R.string.dbColUsersCollection)
+        val userId = mAuth.currentUser?.email.toString()
+
+        db.collection(dbCol).document(userId)
+            .get()
+            .addOnSuccessListener {
+                var data = it?.data as MutableMap<String, String>
+                profile_name.setText(data.getValue("name").toString())
+                profile_dompet_saya.setText("Rp. " + data.getValue("balance").toString())
+            }
+    }
+
 }

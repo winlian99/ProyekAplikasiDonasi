@@ -30,20 +30,20 @@ class RegisterActivity : AppCompatActivity() {
     private fun registerUser() {
         var nama_lengkap : String = register_nama_lengkap.text.toString()
         var email : String = register_email.text.toString()
-        var tgl_lahir : String = register_tanggal_lahir.text.toString()
+        var tgl_lahir : String = register_tanggal_lahir.dayOfMonth.toString() + "/" + register_tanggal_lahir.month.toString() + "/" + register_tanggal_lahir.year.toString()
         var password : String = register_password.text.toString()
 
         if(nama_lengkap == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(email == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(tgl_lahir == ""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else if(password==""){
-            Toast.makeText(this@RegisterActivity,"Fill the empt field", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@RegisterActivity,"Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else{
             mAuth.createUserWithEmailAndPassword(email,password)
@@ -56,10 +56,10 @@ class RegisterActivity : AppCompatActivity() {
                         refUsers = FirebaseDatabase.getInstance().reference.child("users").child(firebaseUserID)
 
                         val data = hashMapOf(
-                            "Nama Lengkap" to register_nama_lengkap.text.toString(),
-                            "Tanggal Lahir" to register_tanggal_lahir.text.toString(),
-                            "Email" to register_email.text.toString(),
-                            "Balance" to "0"
+                            "name" to nama_lengkap,
+                            "dob" to tgl_lahir,
+                            "email" to email,
+                            "balance" to "0"
                         )
                         db.collection(dbcol).document(register_email.text.toString()).set(data)
                         Toast.makeText(this@RegisterActivity,"Register Success!", Toast.LENGTH_LONG).show()
