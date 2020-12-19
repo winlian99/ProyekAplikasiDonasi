@@ -1,42 +1,32 @@
 package com.example.proyekaplikasidonasi.ui.galang
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.example.proyekaplikasidonasi.R
-import com.google.common.primitives.UnsignedBytes.toInt
+import com.example.proyekaplikasidonasi.ui.donasi.Donasi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.fragment_galang.*
+import kotlinx.android.synthetic.main.activity_galang.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
-import java.util.*
 
-class GalangFragment : Fragment() {
+class GalangActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_galang)
 
-    private lateinit var mAuth: FirebaseAuth
+        val dataIntent = intent.getParcelableExtra<Donasi>("kirimDonasi")
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_galang, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        mAuth = FirebaseAuth.getInstance()
+        val mAuth = FirebaseAuth.getInstance()
 
         val db = FirebaseFirestore.getInstance()
         val dbCol = "galang_dana"
-        val userId = "galang_test"
+        var userId = ""
+        if (dataIntent.idDonasi != null) {
+            userId = dataIntent.idDonasi
+        }
 
         db.collection(dbCol).document(userId).get().addOnSuccessListener {
             var data = it?.data as MutableMap<String, String>
@@ -63,7 +53,7 @@ class GalangFragment : Fragment() {
             description_date.setText(data.get("date").toString())
             description.setText(data.get("description").toString())
         }.addOnFailureListener{
-            Toast.makeText(context,"Error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@GalangActivity,"Error", Toast.LENGTH_SHORT).show()
         }
     }
 }
