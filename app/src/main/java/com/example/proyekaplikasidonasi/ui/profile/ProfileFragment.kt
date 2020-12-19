@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
-    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,12 +52,9 @@ class ProfileFragment : Fragment() {
 
             val intent = Intent(context, ProfileTopupActivity::class.java)
             startActivity(intent)
-//        profile_dompet_saya.setOnClickListener {
-//            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
-//        }
         }
 
-        profile_menu_setting_profile.setOnClickListener{
+            profile_menu_setting_profile.setOnClickListener{
             val intent = Intent(context, ProfileSettingFragment::class.java)
             startActivity(intent)
 //            val profileSettingProfileFragment = ProfileSettingProfileFragment()
@@ -67,32 +64,36 @@ class ProfileFragment : Fragment() {
 //                addToBackStack(null)
 //                commit()
 //            }
-        }
-
-        profile_button_signout.setOnClickListener{
-            mAuth.signOut()
-            Toast.makeText(context, "Sign Out Success", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, LoginActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        mAuth = FirebaseAuth.getInstance()
-
-        val db = FirebaseFirestore.getInstance()
-        val dbCol = getString(R.string.dbColUsersCollection)
-        val userId = mAuth.currentUser?.email.toString()
-
-        db.collection(dbCol).document(userId)
-            .get()
-            .addOnSuccessListener {
-                var data = it?.data as MutableMap<String, String>
-                profile_name.setText(data.getValue("name").toString())
-                profile_dompet_saya.setText("Rp. " + data.getValue("balance").toString())
             }
+            profile_btn_bantuan.setOnClickListener{
+                val intent = Intent(context, ProfileBantuanActivity::class.java)
+                startActivity(intent)
+            }
+
+            profile_button_signout.setOnClickListener {
+                mAuth.signOut()
+                Toast.makeText(context, "Sign Out Success", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        override fun onResume() {
+            super.onResume()
+
+            mAuth = FirebaseAuth.getInstance()
+
+            val db = FirebaseFirestore.getInstance()
+            val dbCol = getString(R.string.dbColUsersCollection)
+            val userId = mAuth.currentUser?.email.toString()
+
+            db.collection(dbCol).document(userId)
+                .get()
+                .addOnSuccessListener {
+                    var data = it?.data as MutableMap<String, String>
+                    profile_name.setText(data.getValue("name").toString())
+                    profile_dompet_saya.setText("Rp. " + data.getValue("balance").toString())
+                }
+        }
     }
 
-}
