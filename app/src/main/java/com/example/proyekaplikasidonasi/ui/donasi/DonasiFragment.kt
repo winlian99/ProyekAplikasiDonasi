@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_donasi.*
 class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
 
     var arDonasi : ArrayList<Donasi> = arrayListOf()
+    lateinit var adapter : adapterDonasi
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -50,7 +51,9 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
                     )
                     arDonasi.add(tempDonasi)
                 }
-                rvDaftarDonasi.adapter = adapterDonasi(arDonasi)
+                rvDaftarDonasi.layoutManager = LinearLayoutManager(activity)
+                adapter = adapterDonasi(arDonasi)
+                rvDaftarDonasi.adapter = adapter
             }
     }
 }
