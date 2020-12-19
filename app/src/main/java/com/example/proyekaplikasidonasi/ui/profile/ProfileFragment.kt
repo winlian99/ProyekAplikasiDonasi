@@ -52,13 +52,11 @@ class ProfileFragment : Fragment() {
 
             val intent = Intent(context, ProfileTopupActivity::class.java)
             startActivity(intent)
-//        profile_dompet_saya.setOnClickListener {
-//            Toast.makeText(context,"Bisa ngeklik text",Toast.LENGTH_SHORT).show()
-//        }
         }
-            profile_menu_setting_profile.setOnClickListener {
-                val intent = Intent(context, ProfileSettingFragment::class.java)
-                startActivity(intent)
+
+            profile_menu_setting_profile.setOnClickListener{
+            val intent = Intent(context, ProfileSettingFragment::class.java)
+            startActivity(intent)
 //            val profileSettingProfileFragment = ProfileSettingProfileFragment()
 //            var mFragmentManager = activity?.supportFragmentManager
 //            mFragmentManager?.beginTransaction()?.apply {

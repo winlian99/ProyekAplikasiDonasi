@@ -13,15 +13,15 @@
 
     <fragment
         android:id="@+id/navigation_galang"
-        android:name="com.example.proyekaplikasidonasi.ui.riwayat.RiwayatFragment"
+        android:name="com.example.proyekaplikasidonasi.ui.galang.GalangFragment"
         android:label="@string/title_galang"
-        tools:layout="@layout/fragment_riwayat" />
+        tools:layout="@layout/fragment_galang" />
 
     <fragment
         android:id="@+id/navigation_riwayat"
-        android:name="com.example.proyekaplikasidonasi.ui.galang.GalangFragment"
+        android:name="com.example.proyekaplikasidonasi.ui.riwayat.RiwayatFragment"
         android:label="@string/title_riwayat"
-        tools:layout="@layout/fragment_galang" />
+        tools:layout="@layout/fragment_riwayat" />
 
     <fragment
         android:id="@+id/navigation_profile"
