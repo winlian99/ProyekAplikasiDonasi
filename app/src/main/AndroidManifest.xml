@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.ProfileTopupActivity"></activity>
-        <activity android:name=".ui.profile.ProfileSettingFragment"></activity>
+        <activity android:name=".ui.profile.ProfileBantuanActivity"></activity>
+        <activity android:name=".ui.profile.ProfileTopupActivity" />
+        <activity android:name=".ui.profile.ProfileSettingFragment" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity" />
         <activity
