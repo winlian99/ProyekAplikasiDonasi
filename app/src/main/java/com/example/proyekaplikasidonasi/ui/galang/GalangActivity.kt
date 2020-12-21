@@ -1,5 +1,6 @@
 package com.example.proyekaplikasidonasi.ui.galang
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -54,6 +55,12 @@ class GalangActivity : AppCompatActivity() {
             description.setText(data.get("description").toString())
         }.addOnFailureListener{
             Toast.makeText(this@GalangActivity,"Error", Toast.LENGTH_SHORT).show()
+        }
+
+        donation_button.setOnClickListener {
+            val intent = Intent(this@GalangActivity, BerdonasiActivity::class.java)
+            intent.putExtra("kirimDonasi", dataIntent)
+            startActivity(intent)
         }
     }
 }

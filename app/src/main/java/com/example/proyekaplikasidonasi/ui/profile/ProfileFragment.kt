@@ -74,10 +74,6 @@ class ProfileFragment : Fragment() {
                 val intent = Intent(context, ProfileBantuanActivity::class.java)
                 startActivity(intent)
             }
-            profile_btn_galang_dana_saya.setOnClickListener{
-                val intent = Intent(context, ProfileGalangDanaSayaActivity::class.java)
-                startActivity(intent)
-            }
 
             profile_button_signout.setOnClickListener {
                 mAuth.signOut()
