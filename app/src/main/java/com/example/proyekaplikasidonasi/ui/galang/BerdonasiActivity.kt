@@ -36,7 +36,7 @@ class BerdonasiActivity : AppCompatActivity() {
             // And also edit existing money data of galang and current user
             val editText_money: EditText = findViewById(R.id.donated_money)
 
-            var donator_money: Float = editText_money.text.toString().toFloat() // Input from page
+            val donator_money: Float = editText_money.text.toString().toFloat() // Input from page
             val email_user: String = mAuth.currentUser?.email.toString() // Get email to get balance
             var current_money_user: Float = 0.0F // This is for the calculated balance
             var current_money_galang: Float = 0.0F // This is for galang
@@ -44,7 +44,7 @@ class BerdonasiActivity : AppCompatActivity() {
 
             // To decrease the money of the user and add the one in galang
             db.collection("users").document(email_user).get().addOnSuccessListener {
-                var data = it?.data as MutableMap<String, String>
+                val data = it?.data as MutableMap<String, String>
 
                 current_money_user = data.get("balance").toString().toFloat()
                 current_money_galang = data_intent.jumlahDonasiSaatIni.toFloat()
@@ -73,7 +73,7 @@ class BerdonasiActivity : AppCompatActivity() {
 
                     // Adding +1 to the donation counter
                     db.collection("galang_dana").document(data_intent.idDonasi).get().addOnSuccessListener {
-                        var data = it?.data as MutableMap<String, String>
+                        val data = it?.data as MutableMap<String, String>
                         dNum = data.get("donated_num").toString().toInt() + 1
                     }
 
@@ -86,7 +86,7 @@ class BerdonasiActivity : AppCompatActivity() {
                     galang_dana.update("donated_num", dNum.toString())
                     current_user.update("balance", current_money_user.toString())
                 } else {
-                    Toast.makeText(this@BerdonasiActivity ,"Uang dibawah batas minimal donasi", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@BerdonasiActivity ,"Uang dibawah batas minimal donasi", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this@BerdonasiActivity,"Uang anda tidak cukup", Toast.LENGTH_SHORT).show()
