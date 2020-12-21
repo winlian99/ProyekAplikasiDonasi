@@ -1,6 +1,8 @@
 package com.example.proyekaplikasidonasi.ui.donasi
 
 import android.graphics.BitmapFactory
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,14 +17,16 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FileDownloadTask
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.item_donasi.view.*
 import java.io.File
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-
+@Parcelize
 data class Donasi(
+    var idDonasi : String,
     var judul: String,
     var tanggal: String,
     var batasWaktu: String,
@@ -30,8 +34,9 @@ data class Donasi(
     var targetDonasi: String,
     var minimalDonasi: String,
     var jumlahDonasiSaatIni: String,
+    var jumlahDonasiDilakukan : String,
     var idPenggalang: String
-)
+) : Parcelable
 
 class adapterDonasi(private val listDonasi: ArrayList<Donasi>) : RecyclerView.Adapter<adapterDonasi.ListViewHolder>(){
 
@@ -99,7 +104,7 @@ class adapterDonasi(private val listDonasi: ArrayList<Donasi>) : RecyclerView.Ad
             }
 
         holder.txtJudulDonasi.setText(dataDonasi.judul)
-        var progressPercent = dataDonasi.jumlahDonasiSaatIni.toInt() / dataDonasi.targetDonasi.toInt() * 100
+        var progressPercent = dataDonasi.jumlahDonasiSaatIni.toInt() * 100 / dataDonasi.targetDonasi.toInt()
         holder.progressBar.progress = progressPercent
 
         // Convert uang ke rupiah
@@ -111,6 +116,10 @@ class adapterDonasi(private val listDonasi: ArrayList<Donasi>) : RecyclerView.Ad
 
         holder.txtTerkumpul.setText("Rp. " + uangSaatIni)
         holder.txtBatasWaktu.setText(dataDonasi.batasWaktu)
+
+        holder.imageShow.setOnClickListener {
+            listener?.itemKlik(it, dataDonasi)
+        }
 
     }
 

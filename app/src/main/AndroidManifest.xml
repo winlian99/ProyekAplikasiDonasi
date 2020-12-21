@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.ProfileGalangDanaSayaActivity"></activity>
+        <activity android:name=".ui.profile.ProfileGalangDanaSaya"></activity>
+        <activity android:name=".ui.galang.GalangActivity" />
         <activity android:name=".ui.profile.ProfileBantuanActivity" />
         <activity android:name=".ui.profile.ProfileTopupActivity" />
         <activity android:name=".ui.profile.ProfileSettingFragment" />

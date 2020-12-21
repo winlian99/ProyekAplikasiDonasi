@@ -1,63 +1,52 @@
-package com.example.proyekaplikasidonasi.ui.donasi
+package com.example.proyekaplikasidonasi.ui.profile
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyekaplikasidonasi.R
+import com.example.proyekaplikasidonasi.ui.donasi.Donasi
+import com.example.proyekaplikasidonasi.ui.donasi.adapterDonasi
 import com.example.proyekaplikasidonasi.ui.galang.GalangActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_profile_galang_dana_saya.*
 import kotlinx.android.synthetic.main.fragment_donasi.*
 
-class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
+class ProfileGalangDanaSaya : AppCompatActivity(), adapterDonasi.RecyclerViewClickListener {
 
     var arDonasi : ArrayList<Donasi> = arrayListOf()
     lateinit var adapter : adapterDonasi
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_donasi, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_profile_galang_dana_saya)
 
         AmbilData()
     }
 
     override fun itemKlik(view: View, dataDonasi: Donasi) {
         super.itemKlik(view, dataDonasi)
-//        val bundle = Bundle()
-//        bundle.putParcelable("kirimDonasi", dataDonasi)
-//
-//        val galangFragment = GalangFragment()
-//        galangFragment.arguments = bundle
-//        val mFragmentManager = activity?.supportFragmentManager
-//        mFragmentManager?.beginTransaction()?.apply {
-//            replace(R.id.frameContainer, galangFragment, galangFragment::class.java.simpleName)
-//            addToBackStack(null)
-//            commit()
-//        }
-        val intent = Intent(context, GalangActivity::class.java)
+
+        val intent = Intent(this@ProfileGalangDanaSaya, GalangActivity::class.java)
         intent.putExtra("kirimDonasi", dataDonasi)
         startActivity(intent)
     }
 
     private fun AmbilData(){
+        val mAuth = FirebaseAuth.getInstance()
+        val userId = mAuth.currentUser?.email.toString()
+
         val db = FirebaseFirestore.getInstance()
         val dbCol = "galang_dana"
 
         db.collection(dbCol)
+            .whereEqualTo("id_penggalang", userId)
             .get()
             .addOnSuccessListener {
-                documents ->
+                    documents ->
                 for (document in documents) {
                     var data = document.data as MutableMap<String, String>
                     var tempDonasi = Donasi(
@@ -74,14 +63,14 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
                     )
                     arDonasi.add(tempDonasi)
                 }
-                rvDaftarDonasi.layoutManager = LinearLayoutManager(activity)
+                rvGalangDanaSaya.layoutManager = LinearLayoutManager(this)
                 adapter = adapterDonasi(arDonasi)
-                rvDaftarDonasi.adapter = adapter
+                rvGalangDanaSaya.adapter = adapter
 
                 adapter.listener = this
             }
             .addOnFailureListener {
-                Toast.makeText(context, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProfileGalangDanaSaya, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
             }
     }
 }

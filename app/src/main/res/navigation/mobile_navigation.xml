@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_galang"
-        android:name="com.example.proyekaplikasidonasi.ui.galang.GalangFragment"
+        android:name="com.example.proyekaplikasidonasi.ui.buatDonasi.BuatDonasiFragment"
         android:label="@string/title_galang"
-        tools:layout="@layout/fragment_galang" />
+        tools:layout="@layout/fragment_buat_donasi" />
 
     <fragment
         android:id="@+id/navigation_riwayat"
