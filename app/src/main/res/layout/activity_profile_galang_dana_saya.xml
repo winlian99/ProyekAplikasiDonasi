@@ -4,14 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_donasi"
-    android:paddingTop="5dp"
-    android:paddingBottom="70dp"
-    tools:context=".ui.donasi.DonasiFragment">
+    tools:context=".ui.profile.ProfileGalangDanaSaya">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rvDaftarDonasi" />
+        android:id="@+id/rvGalangDanaSaya" />
 
 </LinearLayout>

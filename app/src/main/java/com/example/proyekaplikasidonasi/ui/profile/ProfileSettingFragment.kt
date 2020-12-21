@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.proyekaplikasidonasi.MainActivity
 import com.example.proyekaplikasidonasi.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_setting_profile.*
 
 class ProfileSettingFragment : AppCompatActivity() {
@@ -39,13 +37,13 @@ class ProfileSettingFragment : AppCompatActivity() {
                 profile_setting_email.setText(data.getValue("email").toString())
                 saldo = data.getValue("balance").toString().toString()
                 val tanggal_lahir = data.getValue("dob").toString().split("/").toTypedArray()
-                profile_setting_dob.updateDate(tanggal_lahir[2].toInt(), tanggal_lahir[1].toInt(), tanggal_lahir[0].toInt())
+                buat_donasi_limit_date.updateDate(tanggal_lahir[2].toInt(), tanggal_lahir[1].toInt(), tanggal_lahir[0].toInt())
             }
 
         profile_update_button.setOnClickListener {
             var nama_lengkap : String = profile_setting_nama.text.toString()
             var email : String = userId
-            var tgl_lahir : String = profile_setting_dob.dayOfMonth.toString() + "/" + profile_setting_dob.month.toString() + "/" + profile_setting_dob.year.toString()
+            var tgl_lahir : String = buat_donasi_limit_date.dayOfMonth.toString() + "/" + buat_donasi_limit_date.month.toString() + "/" + buat_donasi_limit_date.year.toString()
 
             if(nama_lengkap == ""){
                 Toast.makeText(this@ProfileSettingFragment,"Nama tidak boleh kosong", Toast.LENGTH_LONG).show()
