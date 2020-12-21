@@ -50,7 +50,7 @@ class BuatDonasiFragment : Fragment() {
             if(buat_donasi_target_donasi.text.toString().toInt() < 0){
                 Toast.makeText(context, "Target donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
             }
-            else if (buat_donasi_min_donasi.text.toString().toInt() < 0){
+            else if (buat_donasi_min_donasi.text.toString().toInt() <= 0){
                 Toast.makeText(context, "Minimal donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
             }
             else if (currentDate.toInt() > limitDateTemp.toInt()){

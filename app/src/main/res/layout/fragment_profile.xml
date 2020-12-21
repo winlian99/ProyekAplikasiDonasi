@@ -145,6 +145,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:textSize="18sp"
+                        android:id="@+id/profile_galang_dana_saya"
                         android:text="Galang Dana Saya" />
 
                 </LinearLayout>

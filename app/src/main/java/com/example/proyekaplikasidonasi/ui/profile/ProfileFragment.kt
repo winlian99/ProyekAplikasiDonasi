@@ -81,6 +81,11 @@ class ProfileFragment : Fragment() {
                 val intent = Intent(context, LoginActivity::class.java)
                 startActivity(intent)
             }
+
+            profile_galang_dana_saya.setOnClickListener {
+                val intent = Intent(context, ProfileGalangDanaSaya::class.java)
+                startActivity(intent)
+            }
         }
 
         override fun onResume() {
