@@ -40,7 +40,7 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
                 for (document in documents) {
                     var data = document.data as MutableMap<String, String>
                     var tempDonasi = Donasi(
-                        data.getValue("description_title").toString(),
+                        data.getValue("name").toString(),
                         data.getValue("date").toString(),
                         data.getValue("limit").toString(),
                         data.getValue("description").toString(),
