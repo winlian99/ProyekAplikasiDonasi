@@ -14,6 +14,9 @@ import com.example.proyekaplikasidonasi.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
+import java.util.*
 
 class ProfileFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
@@ -39,7 +42,9 @@ class ProfileFragment : Fragment() {
             .addOnSuccessListener {
                 var data = it?.data as MutableMap<String, String>
                 profile_name.setText(data.getValue("name").toString())
-                profile_dompet_saya.setText("Rp. " + data.getValue("balance").toString())
+                val format: NumberFormat = DecimalFormat("#,###")
+                val tempDompet = data.getValue("balance").toString().toInt()
+                profile_dompet_saya.setText("Rp. " + format.format(tempDompet).toString())
             }
 
 //        profile_dompet_saya.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_account_balance_wallet_24, 0,0,0)
@@ -92,7 +97,9 @@ class ProfileFragment : Fragment() {
                 .addOnSuccessListener {
                     var data = it?.data as MutableMap<String, String>
                     profile_name.setText(data.getValue("name").toString())
-                    profile_dompet_saya.setText("Rp. " + data.getValue("balance").toString())
+                    val format: NumberFormat = DecimalFormat("#,###")
+                    val tempDompet = data.getValue("balance").toString().toInt()
+                    profile_dompet_saya.setText("Rp. " + format.format(tempDompet).toString())
                 }
         }
     }
