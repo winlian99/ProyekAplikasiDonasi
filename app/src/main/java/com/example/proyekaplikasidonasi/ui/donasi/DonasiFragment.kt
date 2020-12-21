@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyekaplikasidonasi.R
@@ -61,13 +62,14 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
                     var data = document.data as MutableMap<String, String>
                     var tempDonasi = Donasi(
                         document.id,
-                        data.getValue("description_title").toString(),
+                        data.getValue("name").toString(),
                         data.getValue("date").toString(),
                         data.getValue("limit").toString(),
                         data.getValue("description").toString(),
                         data.getValue("target").toString(),
                         data.getValue("minimal").toString(),
                         data.getValue("donated_cash").toString(),
+                        data.getValue("donated_num").toString(),
                         data.getValue("id_penggalang").toString()
                     )
                     arDonasi.add(tempDonasi)
@@ -77,6 +79,9 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
                 rvDaftarDonasi.adapter = adapter
 
                 adapter.listener = this
+            }
+            .addOnFailureListener {
+                Toast.makeText(context, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
             }
     }
 }

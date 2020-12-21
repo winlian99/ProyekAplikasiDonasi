@@ -87,7 +87,7 @@
                         android:layout_height="130dp"
                         android:calendarViewShown="false"
                         android:datePickerMode="spinner"
-                        android:id="@+id/profile_setting_dob" />
+                        android:id="@+id/buat_donasi_limit_date" />
 
                 </LinearLayout>
 

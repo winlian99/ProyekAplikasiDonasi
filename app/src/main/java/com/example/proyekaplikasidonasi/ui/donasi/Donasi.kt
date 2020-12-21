@@ -34,6 +34,7 @@ data class Donasi(
     var targetDonasi: String,
     var minimalDonasi: String,
     var jumlahDonasiSaatIni: String,
+    var jumlahDonasiDilakukan : String,
     var idPenggalang: String
 ) : Parcelable
 

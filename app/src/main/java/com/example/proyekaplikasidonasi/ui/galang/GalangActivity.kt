@@ -49,7 +49,7 @@ class GalangActivity : AppCompatActivity() {
             Log.d("Value of c: ", c.toString())
             jumlah_donasi.setText(data.get("donated_num").toString() + " donasi")
             batas_galang.setText("Berakhir pada: " + data.get("limit").toString())
-            description_title.setText(data.get("description_title").toString())
+            description_title.setText(data.get("name").toString())
             description_date.setText(data.get("date").toString())
             description.setText(data.get("description").toString())
         }.addOnFailureListener{
