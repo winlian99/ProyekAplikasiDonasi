@@ -63,6 +63,7 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
         val dbCol = "galang_dana"
 
         db.collection(dbCol)
+            .whereEqualTo("status","1")
             .get()
             .addOnSuccessListener {
                 documents ->

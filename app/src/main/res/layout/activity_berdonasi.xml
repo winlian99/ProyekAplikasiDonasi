@@ -16,7 +16,7 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/judul_galang"
+            android:id="@+id/judul_galang_donasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Judul Galang yang ingin di donasikan" />
