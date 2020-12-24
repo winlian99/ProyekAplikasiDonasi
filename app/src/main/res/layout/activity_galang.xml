@@ -18,44 +18,44 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:padding="10sp"
-            android:background="@drawable/box_with_border"
             android:id="@+id/header_galang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/box_with_border"
             android:orientation="vertical"
+            android:padding="10sp"
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:textSize="24sp"
                 android:id="@+id/judul_galang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
                 android:text="Judul Galang"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:textColor="@color/startBlue"
-                    android:textSize="16sp"
                     android:id="@+id/donasi_sekarang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
-                    android:text="Rp. x" />
+                    android:text="Rp. x"
+                    android:textColor="@color/startBlue"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/target_donasi"
-                    android:textSize="14sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" terkumpul dari y"/>
+                    android:text=" terkumpul dari y"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -73,19 +73,19 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="14sp"
                     android:id="@+id/jumlah_donasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="x Donasi" />
+                    android:text="x Donasi"
+                    android:textSize="14sp" />
 
                 <TextView
-                    android:textSize="14sp"
                     android:id="@+id/batas_galang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="x hari lagi" />
+                    android:text="x hari lagi"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <Button
@@ -93,10 +93,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:textStyle="bold"
                 android:background="@color/startBlue"
+                android:text="DONASI"
                 android:textColor="@color/cardview_light_background"
-                android:text="DONASI" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/donation_end_button"

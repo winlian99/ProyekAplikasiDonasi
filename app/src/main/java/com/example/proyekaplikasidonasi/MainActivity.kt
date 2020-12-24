@@ -4,39 +4,51 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyekaplikasidonasi.ui.donasi.Donasi
+import com.example.proyekaplikasidonasi.ui.donasi.DonasiFragment
+import com.example.proyekaplikasidonasi.ui.donasi.adapterDonasi
 import com.example.proyekaplikasidonasi.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_donasi.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), adapterDonasi.RecyclerViewClickListener {
     val NmPref = "CobaPref"
     val KeyData = "KeyData"
     lateinit var sP : SharedPreferences
+    var arDonasi : ArrayList<Donasi> = arrayListOf()
+    lateinit var adapter : adapterDonasi
 
     private lateinit var mAuth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         mAuth = FirebaseAuth.getInstance()
         sP = getSharedPreferences(NmPref, MODE_PRIVATE)
 
         if(mAuth.currentUser.toString() == "null"){
+
             Log.d("Message: ",mAuth.currentUser.toString())
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
+
         }
         else{
+
             Log.d("Messagee: ",mAuth.currentUser!!.email.toString())
             val editor : SharedPreferences.Editor = sP.edit()
             editor.putString(KeyData, mAuth.currentUser!!.email.toString())
             editor.apply()
-
         }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
