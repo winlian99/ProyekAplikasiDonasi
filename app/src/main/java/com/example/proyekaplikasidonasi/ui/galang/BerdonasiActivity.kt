@@ -73,19 +73,19 @@ class BerdonasiActivity : AppCompatActivity() {
                             "tanggal_donasi" to current_date
                         )
 
+                        val current_user = db.collection("users").document(email_user)
+                        val galang_dana = db.collection("galang_dana").document(data_intent.idDonasi)
+
                         // Adding +1 to the donation counter
                         db.collection("galang_dana").document(data_intent.idDonasi).get().addOnSuccessListener {
                             val data = it?.data as MutableMap<String, String>
                             dNum = data.get("donated_num").toString().toInt() + 1
+                            galang_dana.update("donated_num", dNum.toString())
                         }
 
                         // All of the updates and creates
                         db.collection(dbColDonasi).add(data_donasi)
-
-                        val current_user = db.collection("users").document(email_user)
-                        val galang_dana = db.collection("galang_dana").document(data_intent.idDonasi)
                         galang_dana.update("donated_cash", current_money_galang.toString())
-                        galang_dana.update("donated_num", dNum.toString())
                         current_user.update("balance", current_money_user.toString())
 
                         Toast.makeText(this@BerdonasiActivity, "Donasi berhasil terima kasih", Toast.LENGTH_SHORT).show()
