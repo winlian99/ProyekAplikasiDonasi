@@ -63,7 +63,7 @@ class adapterDonasi(private val listDonasi: ArrayList<Donasi>) : RecyclerView.Ad
 
         // Get Image From Firebase Storage
         val storage = FirebaseStorage.getInstance()
-        val imageRef = storage.getReference().child("images/donasi/galang_test.jpg")
+        val imageRef = storage.getReference().child("images/donasi/"+dataDonasi.idDonasi+".jpg")
 
         val ONE_MEGABYTE : Long = 1024 * 1024
         imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {

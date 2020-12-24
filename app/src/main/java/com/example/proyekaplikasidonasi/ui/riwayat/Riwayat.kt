@@ -16,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.item_donasi.view.*
 import kotlinx.android.synthetic.main.item_riwayat.view.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 data class Riwayat (
     var judul : String,
@@ -65,7 +67,11 @@ class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerVie
                 holder.txtJudulDonasi.setText(temp.getValue("name").toString())
                 Log.d("Textttt",temp.getValue("name").toString())
             }
-        holder.txtJumlahDonasi.setText(dataRiwayat.jumlah_donasi)
+
+        val format: NumberFormat = DecimalFormat("#,###")
+        val tempDonasi = dataRiwayat.jumlah_donasi.toInt()
+
+        holder.txtJumlahDonasi.setText("Rp. " + format.format(tempDonasi).toString())
         holder.txtKomentar.setText(dataRiwayat.komentar)
         holder.txtTanggalDonasi.setText(dataRiwayat.tanggal_donasi)
         holder.txtNamaDonatur.setText(dataRiwayat.nama_donatur)

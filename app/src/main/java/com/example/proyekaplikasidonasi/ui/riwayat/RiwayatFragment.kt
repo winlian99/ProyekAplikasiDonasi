@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile_galang_dana_saya.*
 import kotlinx.android.synthetic.main.fragment_riwayat.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class RiwayatFragment : Fragment() {
     private lateinit var mAuth: FirebaseAuth
