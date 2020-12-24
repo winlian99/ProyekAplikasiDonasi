@@ -27,8 +27,6 @@ data class Riwayat (
 
 class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerView.Adapter<adapterRiwayat.ListViewHolder>(){
     private lateinit var mAuth: FirebaseAuth
-    var listener : adapterDonasi.RecyclerViewClickListener?=null
-    private var mStorageRef: StorageReference? = null
 
     interface RecyclerViewClickListener{
         fun itemKlik(view: View, dataDonasi: Donasi){

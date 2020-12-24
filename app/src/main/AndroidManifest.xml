@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.profile.ProfileGalangDanaSaya"></activity>
+        <activity android:name=".ui.galang.BerdonasiActivity"></activity>
         <activity android:name=".ui.galang.GalangActivity" />
         <activity android:name=".ui.profile.ProfileBantuanActivity" />
         <activity android:name=".ui.profile.ProfileTopupActivity" />

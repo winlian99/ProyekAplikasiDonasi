@@ -2,6 +2,7 @@ package com.example.proyekaplikasidonasi.ui.galang
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.example.proyekaplikasidonasi.R
@@ -50,7 +51,8 @@ class BerdonasiActivity : AppCompatActivity() {
                 current_money_galang = data_intent.jumlahDonasiSaatIni.toFloat()
 
             }
-
+            Log.d("Duit anda", current_money_user.toString())
+            Log.d("Input: ",donator_money.toString())
             if (donator_money <= current_money_user) {
                 if (donator_money >= data_intent.minimalDonasi.toFloat()) {
                     current_money_user -= donator_money

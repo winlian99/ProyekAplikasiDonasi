@@ -24,7 +24,7 @@ class ProfileSettingFragment : AppCompatActivity() {
         val dbCol = "users"
         val userId = mAuth.currentUser?.email.toString()
         var saldo = "0"
-
+        
         profile_setting_email.isEnabled = false
 
         Log.d("Ini Buat Ngecek", userId)
@@ -39,7 +39,6 @@ class ProfileSettingFragment : AppCompatActivity() {
                 val tanggal_lahir = data.getValue("dob").toString().split("/").toTypedArray()
                 buat_donasi_limit_date.updateDate(tanggal_lahir[2].toInt(), tanggal_lahir[1].toInt(), tanggal_lahir[0].toInt())
             }
-
         profile_update_button.setOnClickListener {
             var nama_lengkap : String = profile_setting_nama.text.toString()
             var email : String = userId
