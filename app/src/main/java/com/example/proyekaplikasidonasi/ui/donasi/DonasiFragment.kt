@@ -14,7 +14,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_donasi.*
 
 class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
-
     var arDonasi : ArrayList<Donasi> = arrayListOf()
     lateinit var adapter : adapterDonasi
 

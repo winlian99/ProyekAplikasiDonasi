@@ -28,7 +28,6 @@ data class Riwayat (
 class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerView.Adapter<adapterRiwayat.ListViewHolder>(){
     private lateinit var mAuth: FirebaseAuth
     var listener : adapterDonasi.RecyclerViewClickListener?=null
-    private var mStorageRef: StorageReference? = null
 
     interface RecyclerViewClickListener{
         fun itemKlik(view: View, dataDonasi: Donasi){
@@ -40,7 +39,6 @@ class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerVie
         parent: ViewGroup,
         viewType: Int
     ): adapterRiwayat.ListViewHolder {
-        //TODO("Not yet implemented")
         val view : View = LayoutInflater.from(parent.context).inflate(
             R.layout.item_riwayat,
             parent,
@@ -50,7 +48,6 @@ class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerVie
     }
 
     override fun onBindViewHolder(holder: adapterRiwayat.ListViewHolder, position: Int) {
-        //TODO("Not yet implemented")
         var dataRiwayat = listRiwayat[position]
         val db  = FirebaseFirestore.getInstance()
         val db1  = FirebaseFirestore.getInstance()
@@ -73,7 +70,6 @@ class adapterRiwayat(private val listRiwayat : ArrayList<Riwayat>)  :RecyclerVie
     }
 
     override fun getItemCount(): Int {
-        //TODO("Not yet implemented")
         return listRiwayat.size
     }
 
