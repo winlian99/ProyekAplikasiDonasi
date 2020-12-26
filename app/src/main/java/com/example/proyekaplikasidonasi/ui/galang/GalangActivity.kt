@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -51,9 +52,9 @@ class GalangActivity : AppCompatActivity() {
         val userIdSession = mAuth.currentUser?.email.toString()
 
         val storage = FirebaseStorage.getInstance()
-        val imageRef = storage.getReference().child("images/donasi/"+dataIntent.idDonasi+".jpg")
+        val imageRef = storage.getReference().child("images/donasi/" + dataIntent.idDonasi + ".jpg")
 
-        val ONE_MEGABYTE : Long = 1024 * 1024
+        val ONE_MEGABYTE: Long = 1024 * 1024
         imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
             var bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
             image_galang.setImageBitmap(bitmap)
@@ -66,7 +67,7 @@ class GalangActivity : AppCompatActivity() {
             documentId = dataIntent.idDonasi
         }
 
-        if(userIdSession != dataIntent.idPenggalang){
+        if (userIdSession != dataIntent.idPenggalang) {
             donation_end_button.visibility = View.GONE
         }
 
@@ -104,35 +105,6 @@ class GalangActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        ambilData(dataIntent.idDonasi.toString())
-    }
-
-    private fun ambilData(pass_id_donasi: String) {
-        val db = FirebaseFirestore.getInstance()
-        val dbCol = "history_donasi"
-
-        // This is where you check for the same thingy
-        db.collection(dbCol).get().addOnSuccessListener {
-            documents ->
-            for (doc in documents) {
-                val data = doc.data as MutableMap<String, String>
-                val tempDonatur = Donatur(doc.id,
-                    data.getValue("id_donasi").toString(),
-                    data.getValue("jumlah_donasi").toString(),
-                    data.getValue("komentar").toString(),
-                    data.getValue("nama_donatur").toString(),
-                    data.getValue("tanggal_donasi").toString(),
-                )
-                if (tempDonatur.id_donasi == pass_id_donasi) {
-                    arDonatur.add(tempDonatur)
-                }
-            }
-            rv_komen_galang.layoutManager = LinearLayoutManager(this)
-            adapter = adapterDonatur(arDonatur)
-            rv_komen_galang.adapter = adapter
-        }.addOnFailureListener{
-            Toast.makeText(this@GalangActivity, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
-
         donation_end_button.setOnClickListener {
             val alert: AlertDialog.Builder = AlertDialog.Builder(this@GalangActivity)
             alert.setTitle("Alert!!")
@@ -146,27 +118,69 @@ class GalangActivity : AppCompatActivity() {
 //                        galang_dana.update("donated_cash", current_money_galang.toString())
 //                        galang_dana.update("donated_num", dNum.toString())
 //                        current_user.update("balance", current_money_user.toString())
-            alert.setPositiveButton("Yes") {
-                dialog, which ->
+            alert.setPositiveButton("Yes") { dialog, which ->
                 val currentGalang = db.collection(dbCol).document(documentId)
                 currentGalang.update("status", "0")
                     .addOnSuccessListener {
-                        Toast.makeText(this@GalangActivity, "Berhasil Menyelesaikan Donasi", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@GalangActivity,
+                            "Berhasil Menyelesaikan Donasi",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         val intent = Intent(this@GalangActivity, MainActivity::class.java)
                         startActivity(intent)
                     }
                     .addOnFailureListener {
-                        Toast.makeText(this@GalangActivity, "Gagal Menyelesaikan Donasi", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@GalangActivity,
+                            "Gagal Menyelesaikan Donasi",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
             }
 
-            alert.setNegativeButton("No") {
-                dialog, which ->
-                Toast.makeText(this@GalangActivity, "Batal Menyelesaikan Donasi", Toast.LENGTH_SHORT).show()
+            alert.setNegativeButton("No") { dialog, which ->
+                Toast.makeText(
+                    this@GalangActivity,
+                    "Batal Menyelesaikan Donasi",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
             alert.show()
+        }
+
+        ambilData(dataIntent.idDonasi.toString())
+    }
+
+    private fun ambilData(pass_id_donasi: String) {
+        val db = FirebaseFirestore.getInstance()
+        val dbCol = "history_donasi"
+
+        // This is where you check for the same thingy
+        db.collection(dbCol).get().addOnSuccessListener { documents ->
+            for (doc in documents) {
+                val data = doc.data as MutableMap<String, String>
+                if(data.getValue("id_donasi").toString() == pass_id_donasi){
+                    val tempDonatur = Donatur(
+                        doc.id,
+                        data.getValue("id_donasi").toString(),
+                        data.getValue("jumlah_donasi").toString(),
+                        data.getValue("komentar").toString(),
+                        data.getValue("nama_donatur").toString(),
+                        data.getValue("tanggal_donasi").toString(),
+                    )
+                    arDonatur.add(tempDonatur)
+                }
+            }
+            rv_komen_galang.layoutManager = LinearLayoutManager(this)
+            adapter = adapterDonatur(arDonatur)
+            rv_komen_galang.adapter = adapter
+        }.addOnFailureListener {
+            Toast.makeText(this@GalangActivity, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
+
+
         }
     }
 }
