@@ -9,6 +9,8 @@ import com.example.proyekaplikasidonasi.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profile_topup.*
+import java.text.NumberFormat
+import java.util.*
 
 
 class ProfileTopupActivity : AppCompatActivity() {
@@ -29,7 +31,12 @@ class ProfileTopupActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 var data = it?.data as MutableMap<String, String>
                 saldo = data.getValue("balance").toString()
-                profile_saldo_sekarang.setText("Saldo Sekarang: " + saldo)
+                val localID = Locale("in", "ID")
+                val formatRupiah = NumberFormat.getCurrencyInstance(localID)
+                var uangSaatIni = formatRupiah.format(saldo.toInt())
+                uangSaatIni = uangSaatIni.toString()
+                uangSaatIni = uangSaatIni.substringAfterLast("p")
+                profile_saldo_sekarang.setText("Saldo Sekarang: Rp " + uangSaatIni)
             }
         profile_btn_topup.setOnClickListener{
             if(profile_nominal.text.toString() != ""){

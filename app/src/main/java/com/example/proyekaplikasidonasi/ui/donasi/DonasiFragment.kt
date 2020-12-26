@@ -1,17 +1,24 @@
 package com.example.proyekaplikasidonasi.ui.donasi
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyekaplikasidonasi.R
 import com.example.proyekaplikasidonasi.ui.galang.GalangActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_donasi.*
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
     var arDonasi : ArrayList<Donasi> = arrayListOf()
@@ -22,12 +29,12 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_donasi, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         AmbilData()
     }
 
@@ -50,10 +57,12 @@ class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
     }
 
     private fun AmbilData(){
+
         val db = FirebaseFirestore.getInstance()
         val dbCol = "galang_dana"
 
         db.collection(dbCol)
+            .whereEqualTo("status","1")
             .get()
             .addOnSuccessListener {
                 documents ->

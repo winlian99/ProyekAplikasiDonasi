@@ -15,7 +15,7 @@
     <ImageView
         android:id="@+id/item_donasi_gambar"
         android:layout_width="320dp"
-        android:layout_height="220dp"
+        android:layout_height="180dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

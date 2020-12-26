@@ -52,7 +52,7 @@ class BerdonasiActivity : AppCompatActivity() {
 
                 current_money_user = data.get("balance").toString().toInt()
                 current_money_galang = data_intent.jumlahDonasiSaatIni.toInt()
-
+              
                 if (donator_money <= current_money_user) {
                     if (donator_money >= data_intent.minimalDonasi.toInt()) {
                         current_money_user -= donator_money
