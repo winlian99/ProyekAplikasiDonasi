@@ -56,7 +56,20 @@ class BuatDonasiFragment : Fragment() {
             val currentDate = sdf.format(Date())
             val sdf2 = SimpleDateFormat("dd/MM/yyyy")
             val currentDate2 = sdf2.format(Date())
-            val limitDateTemp = buat_donasi_limit_date.year.toString() + buat_donasi_limit_date.month.toString() + buat_donasi_limit_date.dayOfMonth.toString()
+            var tempBulan = buat_donasi_limit_date.month + 1
+            var tempBulanStr = tempBulan.toString()
+            if(tempBulan < 10){
+                tempBulanStr = "0" + tempBulanStr
+            }
+            var tempHari = buat_donasi_limit_date.dayOfMonth + 1
+            var tempHariStr = tempHari.toString()
+            if(tempHari < 10){
+                tempHariStr = "0" + tempHariStr
+            }
+            val limitDateTemp = buat_donasi_limit_date.year.toString() + tempBulanStr + tempHariStr
+
+            Log.d("Buat Debug", currentDate)
+            Log.d("Buat Debug", limitDateTemp)
 
             try{
                 if(buat_donasi_target_donasi.text.toString().toInt() < 0){

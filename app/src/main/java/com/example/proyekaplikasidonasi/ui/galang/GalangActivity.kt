@@ -127,6 +127,13 @@ class GalangActivity : AppCompatActivity() {
                             "Berhasil Menyelesaikan Donasi",
                             Toast.LENGTH_SHORT
                         ).show()
+                        val currentPenggalang = db.collection("users").document(dataIntent.idPenggalang)
+                        var currentPenggalangBalance : Int = 0
+                        currentPenggalang.get().addOnSuccessListener {
+                            var data = it?.data as MutableMap<String, String>
+                            currentPenggalangBalance = data.getValue("balance").toString().toInt() + dataIntent.jumlahDonasiSaatIni.toInt()
+                            currentPenggalang.update("balance", currentPenggalangBalance.toString())
+                        }
                         val intent = Intent(this@GalangActivity, MainActivity::class.java)
                         startActivity(intent)
                     }
