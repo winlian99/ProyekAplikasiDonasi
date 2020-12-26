@@ -58,44 +58,54 @@ class BuatDonasiFragment : Fragment() {
             val currentDate2 = sdf2.format(Date())
             val limitDateTemp = buat_donasi_limit_date.year.toString() + buat_donasi_limit_date.month.toString() + buat_donasi_limit_date.dayOfMonth.toString()
 
-            if(buat_donasi_target_donasi.text.toString().toInt() < 0){
-                Toast.makeText(context, "Target donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
-            }
-            else if (buat_donasi_min_donasi.text.toString().toInt() <= 0){
-                Toast.makeText(context, "Minimal donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
-            }
-            else if (currentDate.toInt() > limitDateTemp.toInt()){
-                Toast.makeText(context, "Tanggal batas yang dimasukkan salah", Toast.LENGTH_SHORT).show()
-            }
-            else {
-                val data = hashMapOf(
-                    "name" to buat_donasi_judul.text.toString(),
-                    "target" to buat_donasi_target_donasi.text.toString(),
-                    "limit" to buat_donasi_limit_date.dayOfMonth.toString() + "/" + buat_donasi_limit_date.month.toString() + "/" + buat_donasi_limit_date.year.toString(),
-                    "minimal" to buat_donasi_min_donasi.text.toString(),
-                    "id_penggalang" to userId,
-                    "donated_num" to "0",
-                    "donated_cash" to "0",
-                    "description" to descriptionTemp,
-                    "date" to currentDate2,
-                    "status" to "1"
-                )
+            try{
+                if(buat_donasi_target_donasi.text.toString().toInt() < 0){
+                    Toast.makeText(context, "Target donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
+                }
+                else if (buat_donasi_target_donasi.text.toString().toInt() <= 0){
+                    Toast.makeText(context, "Target donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
+                }
+                else if (buat_donasi_min_donasi.text.toString().toInt() <= 0){
+                    Toast.makeText(context, "Minimal donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
+                }
+                else if (currentDate.toInt() > limitDateTemp.toInt()){
+                    Toast.makeText(context, "Tanggal akhir donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    val data = hashMapOf(
+                        "name" to buat_donasi_judul.text.toString(),
+                        "target" to buat_donasi_target_donasi.text.toString(),
+                        "limit" to buat_donasi_limit_date.dayOfMonth.toString() + "/" + buat_donasi_limit_date.month.toString() + "/" + buat_donasi_limit_date.year.toString(),
+                        "minimal" to buat_donasi_min_donasi.text.toString(),
+                        "id_penggalang" to userId,
+                        "donated_num" to "0",
+                        "donated_cash" to "0",
+                        "description" to descriptionTemp,
+                        "date" to currentDate2,
+                        "status" to "1"
+                    )
 
-                db.collection(dbCol).add(data)
-                    .addOnSuccessListener {
-                        documentReference ->
-                        uploadFile(documentReference.id)
-                        Toast.makeText(context, "Berhasil Menggalang Donasi", Toast.LENGTH_SHORT)
-                            .show()
-                        buat_donasi_judul.text.clear()
-                        buat_donasi_target_donasi.text.clear()
-                        buat_donasi_min_donasi.text.clear()
-                        buat_donasi_deskripsi.text.clear()
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(context, "Gagal Menggalang Donasi", Toast.LENGTH_SHORT).show()
-                    }
+                    db.collection(dbCol).add(data)
+                        .addOnSuccessListener {
+                                documentReference ->
+                            uploadFile(documentReference.id)
+                            Toast.makeText(context, "Berhasil Menggalang Donasi", Toast.LENGTH_SHORT)
+                                .show()
+                            buat_donasi_judul.text.clear()
+                            buat_donasi_target_donasi.text.clear()
+                            buat_donasi_min_donasi.text.clear()
+                            buat_donasi_deskripsi.text.clear()
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(context, "Gagal Menggalang Donasi", Toast.LENGTH_SHORT).show()
+                        }
+                }
+
             }
+            catch (e : Exception){
+                android.widget.Toast.makeText(context, "Mohon masukkan data dengan benar", android.widget.Toast.LENGTH_SHORT).show()
+            }
+
         }
     }
 

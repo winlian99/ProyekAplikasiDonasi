@@ -50,8 +50,8 @@ class BerdonasiActivity : AppCompatActivity() {
             db.collection("users").document(email_user).get().addOnSuccessListener {
                 val data = it?.data as MutableMap<String, String>
 
-                current_money_user = data.get("balance").toString().toFloat()
-                current_money_galang = data_intent.jumlahDonasiSaatIni.toFloat()
+                current_money_user = data.get("balance").toString().toInt()
+                current_money_galang = data_intent.jumlahDonasiSaatIni.toInt()
               
                 if (donator_money <= current_money_user) {
                     if (donator_money >= data_intent.minimalDonasi.toInt()) {
