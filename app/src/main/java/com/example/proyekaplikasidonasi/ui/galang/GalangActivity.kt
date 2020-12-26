@@ -1,11 +1,12 @@
 package com.example.proyekaplikasidonasi.ui.galang
 
+
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -23,11 +24,28 @@ import java.text.NumberFormat
 
 
 class GalangActivity : AppCompatActivity() {
+
+    var arDonatur: ArrayList<Donatur> = arrayListOf()
+    lateinit var adapter: adapterDonatur
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.activity_galang , container, false)
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_galang)
 
         val dataIntent = intent.getParcelableExtra<Donasi>("kirimDonasi")
+        Log.d("Cek dataIntent", dataIntent.idPenggalang.toString())
 
         val mAuth = FirebaseAuth.getInstance()
         val userIdSession = mAuth.currentUser?.email.toString()
@@ -67,7 +85,7 @@ class GalangActivity : AppCompatActivity() {
 
             val a = data.get("donated_cash").toString().toFloat()
             val b = data.get("target").toString().toFloat()
-            val c = ((a/b) * 100).toInt()
+            val c = ((a / b) * 100).toInt()
 
             progress_galang.setProgress(c)
             Log.d("Value of c: ", c.toString())
@@ -76,7 +94,7 @@ class GalangActivity : AppCompatActivity() {
             description_title.setText(data.get("name").toString())
             description_date.setText(data.get("date").toString())
             description.setText(data.get("description").toString())
-        }.addOnFailureListener{
+        }.addOnFailureListener {
             Toast.makeText(this@GalangActivity, "Error", Toast.LENGTH_SHORT).show()
         }
 
@@ -85,6 +103,35 @@ class GalangActivity : AppCompatActivity() {
             intent.putExtra("kirimDonasi", dataIntent)
             startActivity(intent)
         }
+
+        ambilData(dataIntent.idDonasi.toString())
+    }
+
+    private fun ambilData(pass_id_donasi: String) {
+        val db = FirebaseFirestore.getInstance()
+        val dbCol = "history_donasi"
+
+        // This is where you check for the same thingy
+        db.collection(dbCol).get().addOnSuccessListener {
+            documents ->
+            for (doc in documents) {
+                val data = doc.data as MutableMap<String, String>
+                val tempDonatur = Donatur(doc.id,
+                    data.getValue("id_donasi").toString(),
+                    data.getValue("jumlah_donasi").toString(),
+                    data.getValue("komentar").toString(),
+                    data.getValue("nama_donatur").toString(),
+                    data.getValue("tanggal_donasi").toString(),
+                )
+                if (tempDonatur.id_donasi == pass_id_donasi) {
+                    arDonatur.add(tempDonatur)
+                }
+            }
+            rv_komen_galang.layoutManager = LinearLayoutManager(this)
+            adapter = adapterDonatur(arDonatur)
+            rv_komen_galang.adapter = adapter
+        }.addOnFailureListener{
+            Toast.makeText(this@GalangActivity, "Gagal Mengambil Data", Toast.LENGTH_SHORT).show()
 
         donation_end_button.setOnClickListener {
             val alert: AlertDialog.Builder = AlertDialog.Builder(this@GalangActivity)
