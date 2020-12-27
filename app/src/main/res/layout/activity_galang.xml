@@ -143,6 +143,26 @@
                 android:text="Konten Cerita" />
         </LinearLayout>
 
+        <LinearLayout
+            android:background="@drawable/box_with_border"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_komen_galang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/item_history_komen_galang" />
+
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

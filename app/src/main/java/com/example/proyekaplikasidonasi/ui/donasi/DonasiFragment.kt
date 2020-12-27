@@ -21,7 +21,6 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.schedule
 
 class DonasiFragment : Fragment(), adapterDonasi.RecyclerViewClickListener  {
-
     var arDonasi : ArrayList<Donasi> = arrayListOf()
     lateinit var adapter : adapterDonasi
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/box_with_border"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/nama_donatur_komen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ini nama donatur"
+        android:textColor="@color/startBlue"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/nominal_donatur_komen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="ini nominal donasi"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tanggal_donatur_komen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="ini tanggal donasi"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/konten_komen_donatur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="ini konten komen"
+        android:textSize="14sp" />
+
+</LinearLayout>
