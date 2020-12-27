@@ -65,6 +65,8 @@ class BuatDonasiFragment : Fragment() {
                 Toast.makeText(context, "Minimal donasi yang dimasukkan salah", Toast.LENGTH_SHORT).show()
             }
             else if (currentDate.toInt() > limitDateTemp.toInt()){
+                Log.d("Curdate:",currentDate.toInt().toString())
+                Log.d("Limit: ",limitDateTemp.toInt().toString())
                 Toast.makeText(context, "Tanggal batas yang dimasukkan salah", Toast.LENGTH_SHORT).show()
             }
             else {
@@ -101,7 +103,6 @@ class BuatDonasiFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == 111 && resultCode == Activity.RESULT_OK && data != null){
             filepath = data.data!!
             Toast.makeText(context, "Berhasil Memilih Gambar", Toast.LENGTH_SHORT).show()

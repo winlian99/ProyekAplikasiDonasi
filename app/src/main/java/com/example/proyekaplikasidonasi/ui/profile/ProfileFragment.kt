@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import android.graphics.BitmapFactory
+import android.util.Log
 import androidx.fragment.app.FragmentManager
 import com.example.proyekaplikasidonasi.MainActivity
 import com.example.proyekaplikasidonasi.R
@@ -16,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.util.*
 
 class ProfileFragment : Fragment() {
@@ -36,7 +40,16 @@ class ProfileFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
         val dbCol = getString(R.string.dbColUsersCollection)
         val userId = mAuth.currentUser?.email.toString()
+        val storage = FirebaseStorage.getInstance()
+        val imageRef = storage.getReference().child("images/profile/"+userId+".jpg")
 
+        val ONE_MEGABYTE : Long = 1024 * 1024
+        Log.d("UserL ",userId)
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener {
+            var bitmap = BitmapFactory.decodeByteArray(it, 0, it.size)
+            Log.d("Gnti Profile","")
+            profile_image.setImageBitmap(bitmap)
+        }
         db.collection(dbCol).document(userId)
             .get()
             .addOnSuccessListener {
