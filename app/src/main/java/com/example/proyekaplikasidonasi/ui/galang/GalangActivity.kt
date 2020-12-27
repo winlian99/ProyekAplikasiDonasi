@@ -75,6 +75,11 @@ class GalangActivity : AppCompatActivity() {
             var data = it?.data as MutableMap<String, String>
             judul_galang.setText(data.get("name").toString())
 
+            if(data.get("status").toString() == "0"){
+                donation_end_button.visibility = View.GONE
+                donation_button.visibility = View.GONE
+            }
+
             val donasi: Double = data.get("donated_cash").toString().toDouble()
             val tDonasi: Double = data.get("target").toString().toDouble()
             val format: NumberFormat = DecimalFormat("#,###")
