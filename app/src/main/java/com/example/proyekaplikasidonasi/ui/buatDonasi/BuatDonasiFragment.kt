@@ -66,10 +66,8 @@ class BuatDonasiFragment : Fragment() {
             if(tempHari < 10){
                 tempHariStr = "0" + tempHariStr
             }
-            val limitDateTemp = buat_donasi_limit_date.year.toString() + tempBulanStr + tempHariStr
 
-            Log.d("Buat Debug", currentDate)
-            Log.d("Buat Debug", limitDateTemp)
+            val limitDateTemp = buat_donasi_limit_date.year.toString() + tempBulanStr + tempHariStr
 
             try{
                 if(buat_donasi_target_donasi.text.toString().toInt() < 0){
@@ -124,7 +122,6 @@ class BuatDonasiFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == 111 && resultCode == Activity.RESULT_OK && data != null){
             filepath = data.data!!
             Toast.makeText(context, "Berhasil Memilih Gambar", Toast.LENGTH_SHORT).show()

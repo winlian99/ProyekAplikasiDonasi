@@ -28,6 +28,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/profile_image"
                         android:layout_width="125dp"
                         android:layout_height="125dp"
                         android:layout_gravity="center_horizontal"

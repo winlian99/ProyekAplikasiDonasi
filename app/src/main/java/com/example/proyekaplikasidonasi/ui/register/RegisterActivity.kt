@@ -14,6 +14,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
 class RegisterActivity : AppCompatActivity() {
@@ -50,8 +52,9 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this@RegisterActivity, "Fill the empty field", Toast.LENGTH_LONG).show()
         }
         else{
-            mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener{ task->
+            mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener{
+                        task->
                     if (task.isSuccessful){
                         val db = FirebaseFirestore.getInstance()
                         val dbcol = "users"
