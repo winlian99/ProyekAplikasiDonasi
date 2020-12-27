@@ -61,13 +61,18 @@ class BuatDonasiFragment : Fragment() {
             if(tempBulan < 10){
                 tempBulanStr = "0" + tempBulanStr
             }
-            var tempHari = buat_donasi_limit_date.dayOfMonth + 1
+            var tempHari = buat_donasi_limit_date.dayOfMonth
             var tempHariStr = tempHari.toString()
             if(tempHari < 10){
                 tempHariStr = "0" + tempHariStr
             }
 
+            Log.d("Tanggal Debug",tempBulanStr)
+            Log.d("Tanggal Debug",tempHariStr)
+
             val limitDateTemp = buat_donasi_limit_date.year.toString() + tempBulanStr + tempHariStr
+
+            Log.d("Tanggal Debug",limitDateTemp)
 
             try{
                 if(buat_donasi_target_donasi.text.toString().toInt() < 0){

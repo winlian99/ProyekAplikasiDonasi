@@ -14,8 +14,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_register.*
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 
 class RegisterActivity : AppCompatActivity() {
